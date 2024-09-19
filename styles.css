@@ -1,181 +1,197 @@
-/* General Styles */
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f5f5f5;
-    /* Light background color */
-    color: #333;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
     overflow: hidden;
-    position: relative;
 }
 
-/* Background Text */
-.background-text {
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.background {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    font-size: 8em;
-    color: #ff69b4;
-    /* Brighter color */
-    text-shadow:
-        0 0 20px rgba(255, 105, 180, 0.8),
-        0 0 40px rgba(255, 105, 180, 0.6),
-        0 0 60px rgba(255, 105, 180, 0.4);
+    background: url('images/img1.jpg') no-repeat center center;
+    background-size: cover;
+    filter: brightness(50%);
     z-index: -1;
-    font-weight: bold;
-    letter-spacing: 10px;
-    opacity: 0.2;
-    transform: rotate(-10deg);
-    white-space: pre-wrap;
-    word-break: break-word;
 }
 
-/* Container */
-.container {
+.content {
+    position: relative;
+    z-index: 2;
     text-align: center;
     padding: 20px;
-    max-width: 800px;
-    margin: 0 auto;
-    position: relative;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
-/* Header */
-header {
-    margin-bottom: 20px;
+h1 {
+    color: #e0b0ff;
+    font-size: 2.8em;
+    margin-bottom: 0.5em;
 }
 
-/* Message Container */
-.message-container {
-    text-align: center;
+p {
+    font-size: 1.5em;
+    margin-bottom: 1.5em;
 }
 
-.message-container h1 {
-    font-size: 2.5em;
-    margin: 0;
-    color: #d7a8a0;
-    /* Nude color */
-    font-family: 'Dancing Script', cursive;
-}
-
-.message-container p {
-    font-size: 1.2em;
-    margin: 10px 0 0;
-    color: #b1a29e;
-    /* Light nude color */
-}
-
-/* Main Content */
-.content {
-    margin: 0 auto;
-    max-width: 600px;
-}
-
-/* Image Box */
-.image-box {
-    width: 100%;
-    height: 400px;
-    position: relative;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    background-color: #fff;
-    margin-bottom: 20px;
-}
-
-.image-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-    opacity: 0;
-}
-
-/* Button */
 button {
-    background-color: #d7a8a0;
-    /* Nude color */
-    color: white;
+    background-color: #a27ba0;
+    color: #fff;
     border: none;
-    padding: 12px 24px;
+    padding: 15px 25px;
     font-size: 1.2em;
-    border-radius: 25px;
+    border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 button:hover {
-    background-color: #c09e92;
-    /* Slightly darker nude */
+    background-color: #9b7f9e;
     transform: scale(1.05);
 }
 
-/* Popup */
-.popup {
+button:active {
+    background-color: #8e6b8a;
+    transform: scale(0.95);
+}
+
+.modal {
     display: none;
+    /* Oculto por defecto */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    justify-content: center;
+    z-index: 3;
+    display: flex;
     align-items: center;
+    justify-content: center;
 }
 
-.popup-content {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 20px;
-    border-radius: 15px;
-    text-align: center;
-    max-width: 90%;
-    position: relative;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-    border: 2px solid #d7a8a0;
-    /* Nude color border */
-}
-
-.popup-image {
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    max-width: 300px;
-    height: auto;
-    object-fit: cover;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    z-index: 1;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, rgba(255, 240, 245, 0.9), rgba(255, 228, 235, 0.9));
+    padding: 40px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 700px;
+    text-align: center;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+    position: relative;
+    z-index: 2;
+    animation: zoomIn 0.5s ease-out;
+}
+
+.flowers-image {
+    width: 100%;
+    max-width: 450px;
     border-radius: 10px;
-    margin-bottom: 15px;
+    margin-top: 20px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.close-button {
+    font-size: 2.5em;
+    color: #333;
+    float: right;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover {
+    color: #a27ba0;
+}
+
+.spoiler-message {
+    font-size: 1.5em;
+    color: #d3a1c7;
+    margin-top: 20px;
+    font-weight: bold;
 }
 
 .extra-message {
+    font-size: 1.2em;
+    color: #6c4f6c;
+    margin-top: 20px;
     font-style: italic;
-    color: #d7a8a0;
-    /* Nude color */
-    margin: 15px 0;
 }
 
-.joke {
-    font-style: italic;
-    color: #b1a29e;
-    /* Light nude color */
-    margin: 15px 0;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
-#closePopup {
-    background-color: #d7a8a0;
-    /* Nude color */
-    border: none;
-    padding: 10px 20px;
-    font-size: 1em;
-    border-radius: 25px;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
-#closePopup:hover {
-    background-color: #c09e92;
-    /* Slightly darker nude */
+@media (max-width: 768px) {
+    .content {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 20px;
+        width: 95%;
+    }
+
+    .flowers-image {
+        max-width: 100%;
+    }
 }
